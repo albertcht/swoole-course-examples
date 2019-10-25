@@ -5,6 +5,7 @@ $server = new Swoole\Server('0.0.0.0', 9501, SWOOLE_PROCESS, SWOOLE_SOCK_TCP);
 $server->on('connect', function ($server, $fd){
     echo "Client {$fd} connected.\n";
 });
+
 $server->on('receive', function ($server, $fd, $reactorId, $data) {
     if (trim($data) === 'exit') {
         $server->close($fd);
@@ -12,6 +13,7 @@ $server->on('receive', function ($server, $fd, $reactorId, $data) {
     }
     $server->send($fd, "Swoole Response: {$data}");
 });
+
 $server->on('close', function ($server, $fd) {
     echo "Client {$fd} closed.\n";
 });
