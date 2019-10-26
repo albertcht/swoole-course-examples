@@ -7,7 +7,7 @@ go(function () {
 
 go(function () {
     co::sleep(1);
-    echo "Swoole is aswsome!\n";
+    echo "Swoole is awesome!\n";
 });
 
 echo "PHP is the best!\n";
