@@ -18,12 +18,11 @@ foreach ($requests as $request) {
 
 $results = [];
 while ($result = $process->pop()) {
-    if (count($results) === count($requests) - 1) {
+    $results[] = $result;
+    if (count($results) === count($requests)) {
         break;
     }
-    $results[] = $result;
 }
-
 
 while (Swoole\Process::wait()) {
     // do nothing
